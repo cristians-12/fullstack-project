@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { img1 } from "./assets/images";
 import WhatsAppButton from "./components/buttons/WhatsAppButton";
 import { BASE_URL } from "./utils/constants";
+import Navbar from "./components/home/Navbar";
 
 export default function App() {
 
@@ -19,13 +20,14 @@ export default function App() {
 
   return (
     <main className="min-h-screen bg-black">
-      <section className="flex items-center justify-center">
-        <section className="w-[50%] self-center h-fit">
-          <h2 className="textZetta text-5xl text-white text-center">
+      <Navbar />
+      <section className="flex-col md:flex items-center justify-center">
+        <section className="md:w-[50%] self-center h-fit">
+          <h2 className="textZetta md:text-5xl text-3xl text-white text-center">
             Las mejores comidas rapidas
           </h2>
         </section>
-        <figure className="w-[35%]">
+        <figure className="md:w-[35%]">
           <img src={img1} alt="burger image" />
         </figure>
 
