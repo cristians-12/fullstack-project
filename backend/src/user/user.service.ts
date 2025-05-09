@@ -6,7 +6,7 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import * as bcrypt from 'bcryptjs';      
+import * as bcrypt from 'bcryptjs';
 
 import { CreateUserRequest } from './dto/create-user.request';
 import { User } from './model/user.model';
@@ -16,7 +16,7 @@ export class UserService {
   constructor(
     @InjectRepository(User)
     private readonly userRepo: Repository<User>,
-  ) {}
+  ) { }
 
   /* ───────── CREATE ───────── */
   async createUser(dto: CreateUserRequest): Promise<User> {
@@ -45,6 +45,14 @@ export class UserService {
   async findById(id: number): Promise<User> {
     const user = await this.userRepo.findOneBy({ id });
     if (!user) throw new NotFoundException('User not found');
+    return user;
+  }
+
+  async findOne(useremail: string): Promise<User> {
+    const user = await this.userRepo.findOne({ where: { email: useremail } })
+    if (!user) {
+      throw new NotFoundException('No se encuentra un usuario con ese email');
+    }
     return user;
   }
 
