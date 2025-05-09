@@ -1,8 +1,24 @@
+import { useEffect } from "react";
 import { img1 } from "./assets/images";
+import WhatsAppButton from "./components/buttons/WhatsAppButton";
+import { BASE_URL } from "./utils/constants";
 
 export default function App() {
+
+  const soli = async () => {
+    const response = fetch(`${BASE_URL}auth/profile`)
+    const data = (await response).json();
+    console.log(await data);
+  }
+
+  useEffect(
+    () => {
+      soli()
+    }, []
+  )
+
   return (
-    <main className="min-h-screen bg-emerald-950">
+    <main className="min-h-screen bg-black">
       <section className="flex items-center justify-center">
         <section className="w-[50%] self-center h-fit">
           <h2 className="textZetta text-5xl text-white text-center">
@@ -14,6 +30,7 @@ export default function App() {
         </figure>
 
       </section>
+      <WhatsAppButton />
     </main>
   )
 }
