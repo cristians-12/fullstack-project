@@ -21,16 +21,15 @@ export default function App() {
   return (
     <main className="min-h-screen bg-black">
       <Navbar />
-      <section className="flex-col md:flex items-center justify-center">
+      <section className="flex flex-col md:flex-row items-center justify-center">
         <section className="md:w-[50%] self-center h-fit">
-          <h2 className="textZetta md:text-5xl text-3xl text-white text-center">
+          <h2 className="textZetta md:text-5xl text-3xl text-yellow-300 text-center">
             Las mejores comidas rapidas
           </h2>
         </section>
         <figure className="md:w-[35%]">
           <img src={img1} alt="burger image" />
         </figure>
-
       </section>
       <WhatsAppButton />
     </main>
