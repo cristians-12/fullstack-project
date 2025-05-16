@@ -7,6 +7,8 @@ import { AppService } from './app.service';
 
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { SaleController } from './sale/sale.controller';
+import { SaleModule } from './sale/sale.module';
 
 @Module({
   imports: [
@@ -28,6 +30,8 @@ import { AuthModule } from './auth/auth.module';
 
     UserModule,
     AuthModule,
+    SaleModule,
   ],
+  controllers: [SaleController],
 })
 export class AppModule { }
