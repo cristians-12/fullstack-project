@@ -1,10 +1,11 @@
-import { JSX, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import type { ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { userStore } from '../store/user/store';
 import { BASE_URL } from '../utils/constants';
 
 interface AuthMiddlewareProps {
-    children: JSX.Element;
+    children: ReactNode;
 }
 
 export default function AuthMiddleware({ children }: AuthMiddlewareProps) {
@@ -17,7 +18,7 @@ export default function AuthMiddleware({ children }: AuthMiddlewareProps) {
     useEffect(() => {
         const checkAuthentication = async () => {
             try {
-                const response = await fetch(`${BASE_URL}auth/profile`, { 
+                const response = await fetch(`${BASE_URL}auth/profile`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -27,7 +28,7 @@ export default function AuthMiddleware({ children }: AuthMiddlewareProps) {
 
                 if (response.ok) {
                     setIsAuthenticated(true);
-                    setHasToken(); 
+                    setHasToken();
                 } else {
                     setIsAuthenticated(false);
                     setNoToken();
@@ -47,11 +48,11 @@ export default function AuthMiddleware({ children }: AuthMiddlewareProps) {
     }, [navigate, location, setHasToken, setNoToken]);
 
     if (loading) {
-        return <div>Cargando...</div>; 
+        return <div>Cargando...</div>;
     }
 
     if (!isAuthenticated) {
-        return null; 
+        return null;
     }
 
     return children; // Renderiza los hijos si está autenticado
