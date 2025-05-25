@@ -27,6 +27,20 @@ export default function DashboardPage() {
         console.log(data);
     }
 
+    const crearVenta = async () => {
+        const response = await fetch(`${BASE_URL}sale`, {
+            method: 'POST',
+            body: JSON.stringify(sale),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+        });
+        const data = await response.json();
+        console.log(data);
+        obtenerVentas();
+    }
+
     useEffect(
         () => {
             obtenerVentas();
@@ -91,6 +105,9 @@ export default function DashboardPage() {
                         {/* <input type="text" placeholder="Porcentaje ganancia" className="w-full border border-gray-300 rounded p-1" /> */}
                     </div>
                 </div>
+                <button onClick={crearVenta}>
+                    Crear venta
+                </button>
             </main>
         </>
     );
