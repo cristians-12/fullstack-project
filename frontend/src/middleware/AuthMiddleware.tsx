@@ -17,7 +17,7 @@ export default function AuthMiddleware({ children }: AuthMiddlewareProps) {
     useEffect(() => {
         const checkAuthentication = async () => {
             try {
-                const response = await fetch(`${BASE_URL}auth/profile`, { // Ajusta la URL según tu backend
+                const response = await fetch(`${BASE_URL}auth/profile`, { 
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -47,11 +47,11 @@ export default function AuthMiddleware({ children }: AuthMiddlewareProps) {
     }, [navigate, location, setHasToken, setNoToken]);
 
     if (loading) {
-        return <div>Cargando...</div>; // Muestra un loader mientras se verifica la autenticación
+        return <div>Cargando...</div>; 
     }
 
     if (!isAuthenticated) {
-        return null; // No renderiza nada si no está autenticado (ya se redirigió a login)
+        return null; 
     }
 
     return children; // Renderiza los hijos si está autenticado

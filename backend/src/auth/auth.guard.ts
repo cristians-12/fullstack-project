@@ -15,8 +15,9 @@ export class AuthGuard implements CanActivate {
     async canActivate(context: ExecutionContext): Promise<boolean> {
         const request = context.switchToHttp().getRequest();
         let token = this.extractTokenFromHeader(request);
+        // console.log('Token desde el header:', token);
         if (!token) {
-            token = this.extractTokenFromCookie(request); 
+            token = this.extractTokenFromCookie(request);
         }
         if (!token) {
             throw new UnauthorizedException('No estás autorizado, debes iniciar sesión.');
@@ -41,6 +42,6 @@ export class AuthGuard implements CanActivate {
     }
 
     private extractTokenFromCookie(request: Request): string | undefined {
-         return request.cookies && request.cookies['jwt'] ? request.cookies['jwt'] : undefined;
+        return request.cookies && request.cookies['jwt'] ? request.cookies['jwt'] : undefined;
     }
 }

@@ -4,6 +4,7 @@ import { BASE_URL } from "../../../utils/constants";
 import Navbar from "../../../components/home/Navbar";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router";
+import { userStore } from "../../../store/user/store";
 
 export default function LoginPage() {
 
@@ -14,6 +15,7 @@ export default function LoginPage() {
 
     const notify = (message: string) => toast.success(message);
 
+    const { setUser } = userStore();
     const navigation = useNavigate();
 
     const login = async () => {
@@ -31,10 +33,10 @@ export default function LoginPage() {
             });
 
             const data = await response.json();
+            setUser(data.user);
+
             if (response.ok) {
                 notify('Inicio de sesión exitoso');
-                console.log('Login exitoso:', data);
-                // Redirigir a una página protegida o dashboard
                 navigation('/dashboard');
             } else {
                 toast.error(data.message || 'Error al iniciar sesión');
