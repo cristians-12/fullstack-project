@@ -13,7 +13,7 @@ type User = {
 export const userStore = create<User>()((set) => ({
     hasToken: false,
     user: null,
-    setNoToken: () => set((state) => ({ hasToken: false })),
-    setHasToken: () => set((state) => ({ hasToken: true })),
-    setUser: (user: UserType) => set((state) => ({ user })),
+    setNoToken: () => set(() => ({ hasToken: false })),
+    setHasToken: () => set(() => ({ hasToken: true })),
+    setUser: (user: UserType) => set(() => ({ user })),
 }))
