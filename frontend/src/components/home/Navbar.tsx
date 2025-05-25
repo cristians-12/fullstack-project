@@ -8,12 +8,12 @@ export default function Navbar() {
             </Link>
 
             <div className="flex gap-5">
-                <button className="bg-yellow-300 px-7 py-2 rounded-2xl hidden md:block">
+                <Link to={'/auth/login'} className="bg-yellow-300 px-7 py-2 rounded-2xl hidden md:block">
                     Iniciar sesion
-                </button>
-                <Link to={'/auth/register'} className="bg-yellow-300 px-7 py-2 rounded-2xl hidden md:block">
-                    Registrate
                 </Link>
+                {/* <Link to={'/auth/register'} className="bg-yellow-300 px-7 py-2 rounded-2xl hidden md:block">
+                    Registrate
+                </Link> */}
             </div>
         </nav>
     )

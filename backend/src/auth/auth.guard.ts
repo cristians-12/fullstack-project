@@ -14,9 +14,12 @@ export class AuthGuard implements CanActivate {
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
         const request = context.switchToHttp().getRequest();
-        const token = this.extractTokenFromHeader(request);
+        let token = this.extractTokenFromHeader(request);
         if (!token) {
-            throw new UnauthorizedException('No estas autorizado, debes iniciar sesión.');
+            token = this.extractTokenFromCookie(request); 
+        }
+        if (!token) {
+            throw new UnauthorizedException('No estás autorizado, debes iniciar sesión.');
         }
         try {
             const payload = await this.jwtService.verifyAsync(
@@ -27,7 +30,7 @@ export class AuthGuard implements CanActivate {
             );
             request['user'] = payload;
         } catch {
-            throw new UnauthorizedException();
+            throw new UnauthorizedException('Token expirado');
         }
         return true;
     }
@@ -35,5 +38,9 @@ export class AuthGuard implements CanActivate {
     private extractTokenFromHeader(request: Request): string | undefined {
         const [type, token] = request.headers.authorization?.split(' ') ?? [];
         return type === 'Bearer' ? token : undefined;
+    }
+
+    private extractTokenFromCookie(request: Request): string | undefined {
+         return request.cookies && request.cookies['jwt'] ? request.cookies['jwt'] : undefined;
     }
 }

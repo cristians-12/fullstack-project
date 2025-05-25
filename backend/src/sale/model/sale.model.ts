@@ -3,7 +3,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 @Entity()
 export class Sale {
     @PrimaryGeneratedColumn()
-    id: number; // ID autoincrementado (integer en PostgreSQL)
+    id: number; 
 
     @Column({ type: 'numeric', precision: 15, scale: 3, unique: true })
     production_value: number;
