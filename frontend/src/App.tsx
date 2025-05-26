@@ -1,8 +1,10 @@
 import { useEffect } from "react";
-import { img1 } from "./assets/images";
+import { circle, img1 } from "./assets/images";
 import WhatsAppButton from "./components/buttons/WhatsAppButton";
 import { BASE_URL } from "./utils/constants";
 import Navbar from "./components/home/Navbar";
+import { colors } from "./utils/colors";
+import MenuContainer from "./components/home/MenuContainer";
 
 export default function App() {
 
@@ -19,18 +21,21 @@ export default function App() {
   )
 
   return (
-    <main className="min-h-screen bg-black">
+    <main className="min-h-screen bg-white">
       <Navbar />
-      <section className="flex flex-col md:flex-row items-center justify-center">
-        <section className="md:w-[50%] self-center h-fit">
-          <h2 className="textZetta md:text-5xl text-3xl text-yellow-300 text-center">
-            Las mejores comidas rapidas
+      <section className="flex flex-col min-h-[90vh] md:flex-row items-center justify-center">
+        <section className="md:w-[50%] w-96 self-center h-fit">
+          <h2 className="textZetta md:text-5xl text-3xl text-center font-bold">
+            Las <span style={{ color: colors.primary }}>mejores</span> comidas rapidas
           </h2>
         </section>
-        <figure className="md:w-[35%]">
+        <figure className="md:w-[35%] w-96 relative">
+          <img src={circle} alt="" className=" absolute" />
           <img src={img1} alt="burger image" />
         </figure>
       </section>
+
+      <MenuContainer />
       <WhatsAppButton />
     </main>
   )

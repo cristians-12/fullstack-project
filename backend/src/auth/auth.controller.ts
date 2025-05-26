@@ -15,7 +15,7 @@ export class AuthController {
         response.cookie('jwt', access_token, {
             httpOnly: true, // La cookie no será accesible desde JavaScript (seguridad contra XSS)
             secure: process.env.NODE_ENV === 'production', // Solo HTTPS en producción
-            sameSite: 'strict', // Protección contra CSRF
+            sameSite: 'none', // Protección contra CSRF
             maxAge: 24 * 60 * 60 * 1000, // Expirar después de 24 horas (en milisegundos)
         });
         return { message: 'Inicio de sesión exitoso', access_token, user };

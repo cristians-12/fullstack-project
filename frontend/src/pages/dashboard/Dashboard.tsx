@@ -27,6 +27,14 @@ export default function DashboardPage() {
         console.log(data);
     }
 
+    const formatNumber = (value: number, decimals: number = 2): string => {
+        return new Intl.NumberFormat('es-CO', {
+            style: 'decimal',
+            minimumFractionDigits: decimals,
+            maximumFractionDigits: decimals,
+        }).format(value);
+    };
+
     const crearVenta = async () => {
         const response = await fetch(`${BASE_URL}sale`, {
             method: 'POST',
@@ -47,6 +55,8 @@ export default function DashboardPage() {
         }, []
     )
 
+
+
     return (
         <>
             <Navbar />
@@ -66,11 +76,11 @@ export default function DashboardPage() {
                         sales.map((sale, index) => (
                             <div key={index} className="grid grid-cols-8 border border-black border-t-0">
                                 <div className="px-4 py-1 border-r border-black">{sale.name}</div>
-                                <div className="px-4 py-1 border-r border-black">{sale.production_value}</div>
-                                <div className="px-4 py-1 border-r border-black">{sale.public_sale_value}</div>
+                                <div className="px-4 py-1 border-r border-black">{formatNumber(Number(sale.production_value), 3)}</div>
+                                <div className="px-4 py-1 border-r border-black">{formatNumber(Number(sale.public_sale_value), 3)}</div>
                                 <div className="px-4 py-1 border-r border-black">{sale.cuantity}</div>
-                                <div className="px-4 py-1 border-r border-black">{sale.investment_value}</div>
-                                <div className="px-4 py-1 border-r border-black">{sale.gross_sale}</div>
+                                <div className="px-4 py-1 border-r border-black">{formatNumber(Number(sale.investment_value), 3)}</div>
+                                <div className="px-4 py-1 border-r border-black">{formatNumber(Number(sale.gross_sale), 3)}</div>
                                 <div className="px-4 py-1 border-r border-black">{sale.profit}</div>
                                 <div className="px-4 py-1">{sale.profit_percentage}%</div>
                             </div>

@@ -1,12 +1,17 @@
 import { Link } from "react-router";
 import { userStore } from "../../store/user/store";
 import { CiUser } from "react-icons/ci";
+import { IoIosMenu } from "react-icons/io";
 
-export default function Navbar() {
+interface Props {
+    clickMenu?: () => void;
+}
+
+export default function Navbar({ clickMenu }: Props) {
     const { user } = userStore();
     return (
-        <nav className="sticky md:flex top-0 bg-white items-center justify-between md:px-20 py-3">
-            <Link to={'/'} className="w-16">
+        <nav className="sticky flex md:flex top-0 bg-white items-center justify-between px-5 md:px-20 py-3">
+            <Link to={'/'} className="w-24 block md:w-16">
                 <img src="https://back.vinapp.co//store/200x117618665-2024-04-02-16-03-46.webp" alt="" />
             </Link>
 
@@ -41,6 +46,9 @@ export default function Navbar() {
                     <span>Hola {user.email}</span>
                 </div>
             )} */}
+            <figure onClick={clickMenu} className="md:hidden block">
+                <IoIosMenu size={40} />
+            </figure>
         </nav>
     )
 }
