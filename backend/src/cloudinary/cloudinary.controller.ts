@@ -13,6 +13,9 @@ export class CloudinaryController {
         if (!file) {
             throw new BadRequestException('No se proporcionó un archivo');
         }
-        return this.cloudinaryService.uploadFile(file);
+        const response = this.cloudinaryService.uploadFile(file);
+        const {url} = await response;
+        console.log(url);
+        return url;
     }
 }

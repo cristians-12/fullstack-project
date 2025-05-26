@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { SaleController } from './sale/sale.controller';
 import { SaleModule } from './sale/sale.module';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { MenuModule } from './menu/menu.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
     AuthModule,
     SaleModule,
     CloudinaryModule,
+    MenuModule,
   ],
   controllers: [SaleController],
 })
