@@ -7,13 +7,13 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { SaleController } from './sale/sale.controller';
 import { SaleModule } from './sale/sale.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 @Module({
   imports: [
     // Variables de entorno globales
     ConfigModule.forRoot({ isGlobal: true }),
 
-    // Conexión a Postgres
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (cfg: ConfigService) => ({
@@ -28,6 +28,7 @@ import { SaleModule } from './sale/sale.module';
     UserModule,
     AuthModule,
     SaleModule,
+    CloudinaryModule,
   ],
   controllers: [SaleController],
 })
