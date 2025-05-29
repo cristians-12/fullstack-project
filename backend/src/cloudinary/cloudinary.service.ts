@@ -7,8 +7,6 @@ const streamifier = require('streamifier');
 @Injectable()
 export class CloudinaryService {
     uploadFile(file: Express.Multer.File): Promise<CloudinaryResponse> {
-        // console.log('Archivo recibido:', file); // Verifica si file existe
-        // console.log('Streamifier:', streamifier); // Verifica si streamifier está definido
         return new Promise<CloudinaryResponse>((resolve, reject) => {
             const uploadStream = cloudinary.uploader.upload_stream(
                 (error, result) => {
