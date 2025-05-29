@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Navbar from "../../components/home/Navbar";
 import type { SaleType } from "../../types/venta/type";
 import { BASE_URL } from "../../utils/constants";
 import LayoutDashboard from "../../components/hoc/LayoutDashboard";

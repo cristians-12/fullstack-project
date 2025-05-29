@@ -1,3 +1,5 @@
+import type { MenuItemType } from "../../types/menu/type";
+
 export default function MenuCardInfo({ category, image, name, public_sale_value }: MenuItemType) {
     return (
         <div className="w-80 flex flex-col items-center justify-center p-3 gap-2 relative shadow rounded bg-white">
