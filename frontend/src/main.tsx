@@ -8,6 +8,7 @@ import { Toaster } from 'react-hot-toast'
 import LoginPage from './pages/auth/login/LoginPage.tsx'
 import AuthMiddleware from './middleware/AuthMiddleware.tsx'
 import DashboardPage from './pages/dashboard/Dashboard.tsx'
+import MenuPage from './pages/menu/MenuPage.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -22,6 +23,14 @@ createRoot(document.getElementById('root')!).render(
           element={
             <AuthMiddleware>
               <DashboardPage />
+            </AuthMiddleware>
+          }
+        />
+        <Route
+          path='/menu'
+          element={
+            <AuthMiddleware>
+              <MenuPage />
             </AuthMiddleware>
           }
         />

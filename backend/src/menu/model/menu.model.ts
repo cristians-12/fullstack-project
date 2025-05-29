@@ -13,7 +13,7 @@ export class Menu {
     name: string;
 
     @IsNumber({}, { message: 'El valor de venta al público debe ser un número' })
-    @Column({ type: 'numeric', precision: 15, scale: 3 })
+    @Column({ type: 'integer' })
     public_sale_value: number;
 
     @IsIn(['perro', 'salchipapa', 'hamburguesa'], { message: 'La categoría debe ser perro, salchipapa o hamburguesa' })

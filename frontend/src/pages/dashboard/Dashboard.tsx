@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../../components/home/Navbar";
 import type { SaleType } from "../../types/venta/type";
 import { BASE_URL } from "../../utils/constants";
+import LayoutDashboard from "../../components/hoc/LayoutDashboard";
 
 export default function DashboardPage() {
 
@@ -58,8 +59,7 @@ export default function DashboardPage() {
 
 
     return (
-        <>
-            <Navbar />
+        <LayoutDashboard>
             <main>
                 <div className="grid grid-cols-8 border border-black">
                     <div className="px-4 py-1 border-r border-black">Nombre</div>
@@ -119,6 +119,6 @@ export default function DashboardPage() {
                     Crear venta
                 </button>
             </main>
-        </>
+        </LayoutDashboard>
     );
 }
