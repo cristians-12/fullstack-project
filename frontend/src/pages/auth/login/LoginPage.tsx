@@ -54,7 +54,7 @@ export default function LoginPage() {
                 <section className="min-h-screen flex items-center justify-center">
                     <div className="flex flex-col gap-5 bg-yellow-400 p-5 pb-20 rounded-2xl">
                         <input className="border bg-white border-black px-10 py-2 rounded-2xl" placeholder="Email" onChange={(e) => setForm({ ...form, email: e.target.value })} type="text" />
-                        <input className="border bg-white border-black px-10 py-2 rounded-2xl" placeholder="Contraseña" onChange={(e) => setForm({ ...form, password: e.target.value })} type="text" />
+                        <input className="border bg-white border-black px-10 py-2 rounded-2xl" placeholder="Contraseña" onChange={(e) => setForm({ ...form, password: e.target.value })} type="password" />
                         {/* <input className="border bg-white border-black px-10 py-2 rounded-2xl" placeholder="Confirma tu contraseña" onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })} type="text" /> */}
                         <button onClick={login} className="cursor-pointer">Iniciar sesion</button>
                     </div>
